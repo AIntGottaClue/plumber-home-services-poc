@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import {services} from '../../data/content';
+export function getStaticPaths(){return services.map(service=>({params:{service:service.slug},props:{service}}))}
+const {service:s}=Astro.props;const root=import.meta.env.BASE_URL;
+---
+<Base title={`${s.title} in Austin`} description={s.intro}><div class="interior"><div class="breadcrumbs"><a href={root}>Home</a> / <a href={`${root}services/`}>Services</a> / {s.title}</div><h1>{s.title} in Austin</h1><p>{s.intro}</p><a class="button" href={`${root}contact/`}>View contact preview ↗</a></div><article class="reading">{s.sections.map(([title,text])=><section><h2>{title}</h2><p>{text}</p></section>)}<section><h2>Common questions</h2>{s.faq.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</section><section><h2>Related plumbing guides</h2>{services.filter(other=>other.slug!==s.slug).map(other=><a class="pill" href={`${root}services/${other.slug}/`}>{other.title} ↗</a>)}</section><p class="sample-note">General information, not a diagnosis or instructions to perform hazardous work. <a href="https://www.austintexas.gov/water/water-leaks">Austin Water leak guidance</a> · <a href="https://www.epa.gov/watersense/fix-leak-week">EPA WaterSense</a></p></article></Base>
