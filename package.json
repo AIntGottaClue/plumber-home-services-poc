@@ -1,0 +1,1 @@
+{"name":"plumber-home-services-poc","version":"1.0.0","type":"module","scripts":{"dev":"astro dev","build":"astro build","build:both":"node scripts/build-both.mjs","preview":"astro preview"},"dependencies":{"astro":"^5.18.2"},"devDependencies":{"playwright":"^1.55.0"}}
