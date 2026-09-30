@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import {areas} from '../../data/content';
+export function getStaticPaths(){return areas.map(area=>({params:{area:area.slug},props:{area}}))}
+const {area:a}=Astro.props;const root=import.meta.env.BASE_URL;
+---
+<Base title={`${a.name} plumbing information`} description={a.paragraphs[0]}><div class="interior"><div class="breadcrumbs"><a href={root}>Home</a> / <a href={`${root}service-areas/`}>Service areas</a> / {a.name}</div><h1>Plumbing information for {a.name}</h1></div><article class="reading">{a.paragraphs.map(p=><p>{p}</p>)}<section><h2>Prepare for the first conversation</h2><p>Have the address, the affected fixtures, and a short description of what changed ready. If you tried a cleaning product or a temporary fix, mention that before an inspection.</p><a class="button" href={`${root}contact/`}>View contact preview ↗</a></section><p class="sample-note">Published coverage sources: <a href="https://www.abchomeandcommercial.com/austin/plumbing">ABC</a>, <a href="https://radiantplumbing.com/austin/">Radiant</a>, and <a href="https://stansac.com/austin-plumbing-services/">Stan's</a>.</p></article></Base>
