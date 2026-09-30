@@ -1,0 +1,4 @@
+---
+import Base from '../layouts/Base.astro';import {services} from '../data/content';const root=import.meta.env.BASE_URL;
+---
+<Base title="Plumbing services"><div class="interior"><h1>Plumbing services</h1><p>Choose the guide that matches the symptoms. Each page covers what to observe, what not to assume, and what to discuss before work begins.</p></div><section class="section grid">{services.map(s=><a class="card" href={`${root}services/${s.slug}/`}><h2>{s.title}</h2><p>{s.intro}</p><span>Read the guide ↗</span></a>)}</section></Base>
