@@ -1,0 +1,4 @@
+---
+import Base from '../layouts/Base.astro';import {areas} from '../data/content';const root=import.meta.env.BASE_URL;
+---
+<Base title="Austin-area plumbing information"><div class="interior"><h1>Service areas</h1><p>The demo businesses publish coverage in the Austin area. Confirm the exact address and job with the business before arranging work. These pages help prepare that conversation without implying availability.</p></div><section class="section grid">{areas.map(a=><a class="card" data-area={a.name} href={`${root}service-areas/${a.slug}/`}><h2>{a.name}</h2><p>{a.paragraphs[0]}</p><span>Area information ↗</span></a>)}</section></Base>
